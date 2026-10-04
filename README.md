@@ -3,9 +3,7 @@
 A simple project page for **QCarVLA: Scalable VLA Design for Mobile Robots**, under York-SDCNLab.
 
 - Website: https://york-sdcnlab.github.io/qcarvla-project-page/
-- Repository: https://github.com/York-SDCNLab/qcarvla-project-page
-- Template: [Academic Project Page Template, original-version](https://github.com/eliahuhorwitz/Academic-project-page-template/tree/original-version)
-- Layout reference: https://ehsan-ami.github.io/rlftsim/
+- Repository: [https://github.com/York-SDCNLab/qcarvla-project-page](https://github.com/York-SDCNLab/QCAR-VLA)
 
 The page uses the upstream template’s original Bulma layout and styles: centered title and authors, rounded resource buttons, a teaser figure, plain academic sections, and BibTeX. No build step is needed.
 
@@ -22,7 +20,3 @@ Changes pushed to `main` automatically publish the `site/` directory through Git
 ## Manuscript content
 
 The title, authors, and affiliations come from `main.tex`. The abstract summary, method, and benchmark text are based on the substantive introduction, benchmark-design, VLA-design, and experiment sections. The supplied LaTeX abstract is IEEE sample text, so the webpage abstract is explicitly marked as a draft summary. No unfinished or provisional performance numbers are published. No publication venue or public model-code release is assumed.
-
-## Template attribution
-
-See [TEMPLATE-NOTICE.md](TEMPLATE-NOTICE.md). The original template is credited in the webpage footer. Research content and figures retain their owners’ rights.
