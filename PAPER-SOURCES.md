@@ -10,7 +10,7 @@ Updated from the LaTeX materials supplied on November 23, 2026.
 | Benchmark map | `images/BenchmarkMapCombined.png`, referenced by `figures/traffic_map.tex` |
 | Benchmark protocol and intervention thresholds | `sections/03_benchmark_design.tex` |
 | Closed-loop comparison table | `tables/benchmark_results.tex` |
-| Open-loop simulation comparison in prose | `tables/open_loop_main.tex` and `sections/05_experiments.tex` |
+| Open-loop evaluation table (Table II) and simulation comparison in prose | `tables/open_loop_main.tex` and `sections/05_experiments.tex` |
 | Method image | `images/qcarvla_architectureV2.png`, referenced by `figures/architecture.tex` |
 | Method highlights | `sections/04_VLA_design.tex` |
 | AGX Orin profiling table | `tables/adaption_compute_comparison.tex` |
@@ -22,3 +22,5 @@ Closed-loop table values are per-rollout means, not totals across the schedule. 
 The benchmark and method images are copied from the paper. The wide introduction figure is an AI-assisted schematic adaptation of the introduction teaser for the web, produced with the built-in image editing tool. It is illustrative rather than a pixel-exact rearrangement of camera data. The original teaser is retained as `site/assets/qcarvla-overview-original.png` for source reference. The full-resolution architecture and map remain unchanged. Original LaTeX materials remain unchanged. Demo media remain placeholders until real footage is uploaded and enabled.
 
 The visual-context wiring in the wide overview was corrected to use parallel encoder outputs: four-camera encoder → Scene projector and four-camera encoder → Map projector, with no Scene → Map dependency. The bypass connector was thinned to match the existing arrows. The page author fields are temporarily anonymous, and the lab link and original-figure note have been removed from the visible page.
+
+Table II is reproduced from the active `tables/open_loop_main.tex` with the original MR fractions and bold formatting. Its simulation entries are labeled historical because that source currently contains a TODO to update them following full-dataset training.

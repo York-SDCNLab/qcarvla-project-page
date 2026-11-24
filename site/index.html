@@ -65,8 +65,8 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <figure>
-          <a href="assets/qcarvla-overview-horizontal.png?v=20261123-parallel-thin" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA overview">
-            <img src="assets/qcarvla-overview-horizontal.png?v=20261123-parallel-thin" alt="QCarVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a motion-primitive planner, followed by continuous residual refinement." fetchpriority="high">
+          <a href="assets/qcarvla-overview-horizontal.png?v=20261123-output-thin" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA overview">
+            <img src="assets/qcarvla-overview-horizontal.png?v=20261123-output-thin" alt="QCarVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a motion-primitive planner, followed by continuous residual refinement." fetchpriority="high">
           </a>
           <figcaption class="subtitle has-text-centered">QCarVLA combines compact motion-primitive prediction with continuous residual refinement for language-guided driving.</figcaption>
         </figure>
@@ -111,6 +111,24 @@
           </ul>
         </div>
       </div>
+      <h3 class="title is-4" id="open-loop-evaluation">Open-loop trajectory prediction</h3>
+      <p class="table-intro">Three-second predictions on held-out routes, evaluated against recorded expert trajectories. Average displacement error (ADE) and final displacement error (FDE) are reported in meters. Miss rate (MR) is the fraction of predictions with FDE greater than 0.20 m. Lower is better; best values are <strong>bold</strong>.</p>
+      <div class="table-container" tabindex="0" role="region" aria-label="Table II: open-loop evaluations on held-out routes; scroll horizontally if needed">
+        <table class="table is-fullwidth paper-table open-loop-table">
+          <caption>Table II. Open-loop evaluations on held-out routes.</caption>
+          <thead><tr><th scope="col">Domain</th><th scope="col">Method</th><th scope="col">ADE (m)</th><th scope="col">FDE (m)</th><th scope="col">MR</th></tr></thead>
+          <tbody>
+            <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Simulation<sup>*</sup></th><th scope="row">OpenDriveVLA</th><td>0.0896</td><td>0.2121</td><td>0.3285</td></tr>
+            <tr><th scope="row">DriveVLA-W0</th><td>0.0989</td><td>0.2187</td><td>0.3447</td></tr>
+            <tr><th scope="row"><strong>QCarVLA (ours)</strong></th><td><strong>0.0784</strong></td><td><strong>0.1694</strong></td><td><strong>0.2314</strong></td></tr>
+            <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Hardware</th><th scope="row">OpenDriveVLA</th><td>0.0935</td><td>0.2261</td><td>0.3197</td></tr>
+            <tr><th scope="row">DriveVLA-W0</th><td>0.1007</td><td>0.2174</td><td>0.3408</td></tr>
+            <tr><th scope="row"><strong>QCarVLA (ours)</strong></th><td><strong>0.0863</strong></td><td><strong>0.1871</strong></td><td><strong>0.2929</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="evaluation-note" style="margin-bottom: 2rem;">* Simulation entries reproduce the historical results listed in the current manuscript draft.</p>
+
       <h3 class="title is-4">Recovery-assisted closed-loop evaluation</h3>
       <p class="table-intro">Mean per-rollout measurements across six held-out routes and three traffic seeds in the held-out traffic configuration. Lower is better for all metrics; best values are <strong>bold</strong> and second-best values are <u>underlined</u>.</p>
       <div class="table-container" tabindex="0" role="region" aria-label="Closed-loop benchmark comparison; scroll horizontally to view all metrics">
