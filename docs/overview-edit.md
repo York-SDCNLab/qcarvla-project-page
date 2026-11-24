@@ -3,7 +3,19 @@
 - Saved figure: `site/assets/qcarvla-overview-horizontal.png`
 - Unmodified original: `site/assets/qcarvla-overview-original.png`
 - Tool: built-in `image_gen.imagegen`, edit mode; no CLI fallback.
-- This is an illustrative layout adaptation. The original is linked on the page for inspection of the original camera view and trajectory overlays. The method architecture and benchmark map are copied directly from the manuscript.
+- This is an illustrative layout adaptation. The original is retained in the repository for inspection of the original camera view and trajectory overlays. The method architecture and benchmark map are copied directly from the manuscript.
+
+## Visual-context correction
+
+The encoder feeds Scene and Map projectors in parallel. The wide figure's incorrect Scene → Map connector was replaced with an encoder-output bypass around Scene. Its stroke and arrowhead were subsequently reduced to match the other thin black connectors. Both corrections used the built-in image editor, with the supplied paper crop as the wiring reference.
+
+### Wiring correction prompt
+
+Image 1 is the edit target: the wide QCarVLA overview. Image 2 is the correct wiring reference, cropped from the paper. Make ONE localized correction in the far-left Visual context panel of Image 1. The 4-camera BEV encoder must feed BOTH Scene projector and Map projector independently, in PARALLEL. Keep the existing downward encoder-to-Scene arrow. Remove the current black downward arrow from the bottom of Scene projector to Map projector. Instead, branch from the black encoder output line just below the green encoder box, turn LEFT, run vertically down in the narrow space LEFT of the blue Scene projector box, then turn RIGHT below the blue box and down into the top of the orange Map projector. The bypass must not touch or pass through Scene projector. This is exactly the bypass shown in Image 2: 4-camera encoder directly to Map projector, not Scene to Map. Preserve absolutely everything else in Image 1: same 2061-by-763 canvas, panel positions, labels, text, fonts, colors, all other arrows, token rows, and original photograph/trajectory overlays. Do not regenerate or alter the photograph, labels, symbols, frame, or other panels. Only change the few black connector strokes in the left visual-context panel.
+
+### Line-weight correction prompt
+
+Edit only the new black bypass connector in the far-left Visual context panel of this QCarVLA diagram. Its current strokes are too thick. Reduce its line weight to match the existing thin black arrows elsewhere in the same diagram (approximately 1.5 to 2 pixels at this 2061×763 resolution), and make its arrowhead the same size and style as the existing encoder-to-Scene arrowhead. This connector begins just below the 4-camera BEV encoder, branches LEFT, bypasses the Scene projector on its left side, then turns RIGHT and down into Map projector. Keep this correct PARALLEL topology: the encoder feeds Scene and Map independently. Do NOT add an arrow from Scene to Map. The branch and all other black connector strokes should look uniform, with clean thin lines and consistent arrowhead sizes. Preserve all existing other arrows, text, colors, diagram blocks, positions, canvas dimensions, dashed boundaries, and photograph/trajectory overlays exactly. Do not move or redraw boxes or change any content. Only thin the over-heavy bypass connector and match its arrowhead.
 
 ## Initial edit prompt
 
