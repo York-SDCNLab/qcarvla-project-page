@@ -1,5 +1,13 @@
 # Horizontal overview asset
 
+## Uniform thin connector reference
+
+The user requested matching the encoder-to-map branch and final output connector to the thinner second screenshot, including their arrowheads. The built-in image editor was given the current full figure and that screenshot as the reference.
+
+### Uniform line-weight edit prompt
+
+Image 1 is the current full QCarVLA diagram to edit. Image 2 is the user's THIN line reference and is the desired standard. The left encoder-to-map bypass in Image 1 is still thicker than the final output line. Make those TWO connector paths use the SAME THIN stroke and SAME SMALL arrowhead, using Image 2's thin output connector as the standard. Specifically THIN the entire black encoder-to-Map path at the far left (the branch below the green 4-camera encoder, leftwards, down past the blue Scene box, rightwards, then down into orange Map) to approximately 1.0–1.2 px, with an arrowhead about 5 px wide × 6 px long at this 2059×764 full-image resolution. Also keep its nearby encoder-to-Scene arrow equally thin with the same head size. The final plus-to-3-second-prediction output connector should remain at that same thin weight; do not make it thicker to match the left branch. No doubled black strokes, no bold connectors, no oversized arrowheads. Correct topology must remain: encoder feeds Scene and Map in PARALLEL, never Scene to Map. Preserve ALL other content: boxes, fonts, labels, math, colored scene/map connectors, dashed borders, token rows, original photograph and trajectory overlays, positions, and overall canvas. This is only a line-weight and arrowhead-size normalization of the two specified black connections. The result should visibly show that the left bypass is as delicate and thin as the final output line in Image 2.
+
 ## Final output connector correction
 
 The output connector from the hybrid-plan sum to the three-second prediction was thinned, including its arrowhead, to match the decoder arrows. This correction used the built-in image editor with the existing overview as the edit target.
