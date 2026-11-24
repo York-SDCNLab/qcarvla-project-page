@@ -6,13 +6,19 @@
   cursor: pointer; background: #999; border-color: transparent; color: white;
 }
 .resource-tooltip {
-  position: absolute; top: calc(100% + 7px); left: 50%; transform: translateX(-50%);
-  z-index: 2; padding: 5px 10px; border-radius: 3px; color: white; background: #363636;
-  font-size: 0.875rem; white-space: nowrap; pointer-events: none; visibility: hidden;
+  position: absolute; top: calc(100% + 9px); left: 50%;
+  transform: translate(-50%, -3px); z-index: 2;
+  padding: 7px 11px; border: 1px solid #e5e7eb; border-radius: 8px;
+  color: #5f6368; background: #fff; box-shadow: 0 3px 12px rgb(0 0 0 / 7%);
+  font-size: 0.8125rem; font-weight: 500; line-height: 1.35;
+  white-space: nowrap; pointer-events: none; visibility: hidden; opacity: 0;
+  transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
 }
 .resource-link:hover .resource-tooltip,
-.resource-link:focus-within .resource-tooltip { visibility: visible; }
-.resource-link.tooltip-dismissed .resource-tooltip { visibility: hidden; }
+.resource-link:focus-within .resource-tooltip {
+  visibility: visible; opacity: 1; transform: translate(-50%, 0); transition-delay: 120ms;
+}
+.resource-link.tooltip-dismissed .resource-tooltip { visibility: hidden; opacity: 0; transition-delay: 0ms; }
 .resource-unavailable:focus-visible { outline: 3px solid #3273dc; outline-offset: 3px; }
 figure > a { display: block; }
 figure img { display: block; width: 100%; height: auto; }
@@ -47,4 +53,7 @@ figure img { display: block; width: 100%; height: auto; }
   .benchmark-overview figure { max-width: 400px; margin: 0 auto; }
   .paper-table { min-width: 650px; }
   .benchmark-table { min-width: 900px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .resource-tooltip { transition: none; }
 }
