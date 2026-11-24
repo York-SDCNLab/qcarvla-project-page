@@ -1,0 +1,38 @@
+[
+  {
+    "id": "simulation-01",
+    "title": "Simulation · Demo 1",
+    "src": "simulation-01.mp4",
+    "enabled": false,
+    "description": "Simulation rollout. Video coming soon.",
+    "poster": null,
+    "captions": null
+  },
+  {
+    "id": "simulation-02",
+    "title": "Simulation · Demo 2",
+    "src": "simulation-02.mp4",
+    "enabled": false,
+    "description": "Simulation rollout. Video coming soon.",
+    "poster": null,
+    "captions": null
+  },
+  {
+    "id": "hardware-01",
+    "title": "Physical QCar2 · Demo 1",
+    "src": "hardware-01.mp4",
+    "enabled": false,
+    "description": "Hardware rollout. Video coming soon.",
+    "poster": null,
+    "captions": null
+  },
+  {
+    "id": "hardware-02",
+    "title": "Physical QCar2 · Demo 2",
+    "src": "hardware-02.mp4",
+    "enabled": false,
+    "description": "Hardware rollout. Video coming soon.",
+    "poster": null,
+    "captions": null
+  }
+]

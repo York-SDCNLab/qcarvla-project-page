@@ -12,7 +12,9 @@
   <link href="https://fonts.googleapis.com/css?family=Google+Sans%7CNoto+Sans" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/project.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/project.js"></script>
 </head>
 <body>
 <main>
@@ -38,30 +40,27 @@
             <p class="is-size-6" style="margin-top: 0.5rem;">Manuscript in preparation</p>
             <div class="column has-text-centered">
               <div class="publication-links">
-                <!-- Replace disabled buttons with linked anchors once resources are released. -->
-                <span class="link-block">
-                  <button class="button is-normal is-rounded is-dark" title="Coming soon" aria-label="Paper coming soon" style="margin: 5px 0;" disabled>
+                <!-- Use a linked anchor here when each resource is released. -->
+                <span class="link-block resource-link">
+                  <button type="button" class="button is-normal is-rounded is-dark resource-unavailable" aria-disabled="true" aria-describedby="paper-status">
                     <span class="icon"><i class="fas fa-file-pdf" aria-hidden="true"></i></span>
                     <span>Paper</span>
                   </button>
+                  <span class="resource-tooltip" id="paper-status" role="tooltip">Coming soon</span>
                 </span>
-                <span class="link-block">
-                  <button class="button is-normal is-rounded is-dark" title="Coming soon" aria-label="Code coming soon" style="margin: 5px 0;" disabled>
+                <span class="link-block resource-link">
+                  <button type="button" class="button is-normal is-rounded is-dark resource-unavailable" aria-disabled="true" aria-describedby="code-status">
                     <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
                     <span>Code</span>
                   </button>
+                  <span class="resource-tooltip" id="code-status" role="tooltip">Coming soon</span>
                 </span>
-                <span class="link-block">
-                  <button class="button is-normal is-rounded is-dark" title="Coming soon" aria-label="Dataset coming soon" style="margin: 5px 0;" disabled>
+                <span class="link-block resource-link">
+                  <button type="button" class="button is-normal is-rounded is-dark resource-unavailable" aria-disabled="true" aria-describedby="dataset-status">
                     <span class="icon"><i class="fas fa-database" aria-hidden="true"></i></span>
                     <span>Dataset</span>
                   </button>
-                </span>
-                <span class="link-block">
-                  <a href="https://github.com/York-SDCNLab/qcarvla-project-page" class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
-                    <span>Page source</span>
-                  </a>
+                  <span class="resource-tooltip" id="dataset-status" role="tooltip">Coming soon</span>
                 </span>
               </div>
             </div>
@@ -75,47 +74,108 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <figure>
-          <a href="assets/benchmark-map.png" target="_blank" rel="noopener" aria-label="View full-resolution benchmark map">
-            <img src="assets/benchmark-map.png" width="8192" height="3604" alt="QCarVLA benchmark map: (a) task locations and route directions, (b) drivable-area constraints, and (c) traffic configurations.">
+          <a href="assets/qcarvla-overview-horizontal.png" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA overview">
+            <img src="assets/qcarvla-overview-horizontal.png" alt="QCarVLA overview: four-camera context and driving instructions feed a motion-primitive planner; a residual flow decoder refines the coarse plan into a three-second trajectory." fetchpriority="high">
           </a>
-          <figcaption class="subtitle has-text-centered">QCarVLA benchmark map. <strong>(a)</strong> Task locations. <strong>(b)</strong> Drivable-area constraints. <strong>(c)</strong> Traffic configurations.</figcaption>
+          <figcaption class="subtitle has-text-centered">QCarVLA combines compact motion-primitive prediction with continuous residual refinement for language-guided driving.</figcaption>
+          <p class="figure-caption">Schematic adapted from the introduction figure. <a href="assets/qcarvla-overview-original.png" target="_blank" rel="noopener">View the original paper figure</a>.</p>
         </figure>
       </div>
     </div>
   </section>
 
-  <!-- Draft summary based on manuscript sections; the supplied LaTeX abstract is sample text. -->
   <section class="section hero is-light" id="abstract">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <p>Vision-language-action (VLA) models connect visual observations and natural-language instructions to robot actions. Deploying these models on embedded mobile robots requires balancing prediction quality with inference latency and accumulated closed-loop errors. QCarVLA investigates this trade-off on the QCar2 platform through efficient four-camera environment encoding, language-conditioned flow-matching trajectory prediction, and training-time discrete motion supervision. A common benchmark spans the Quanser QLabs digital twin and physical QCar2 hardware, with ordered pickup, stop, and drop-off tasks. Evaluation considers task completion, traffic-rule compliance, drivable-area compliance, recovery dependence, and computational performance on the onboard NVIDIA AGX Orin.</p>
-            <p class="is-size-7">Draft summary based on the current manuscript. Paper and experimental results are forthcoming.</p>
+            <p>Vision-language-action (VLA) policies offer a unified approach to combining visual scene understanding with language-guided driving. However, their computational demands make onboard deployment difficult, and their long-horizon closed-loop performance on embedded mobile robots remains insufficiently characterized. Short-horizon trajectory accuracy alone does not establish whether these policies can sustain task execution under onboard sensing and computational constraints.</p>
+            <p>We present QCarVLA, an embedded driving framework that jointly investigates efficient trajectory generation and sustained closed-loop driving performance. Building on a pretrained driving VLA architecture, QCarVLA adapts visual context to four surround-view cameras and a platform-scaled bird&#x27;s-eye-view geometry. The trajectory predictor combines autoregressive motion primitive generation with language-conditioned flow-based residual refinement. The compact motion primitive prediction reduces the overhead of autoregressive decoding while continuous refinement from the flow residuals mitigates quantization errors from a finite motion primitive vocabulary.</p>
+            <p>We also introduce a reproducible benchmark spanning simulation and physical hardware. This benchmark contains multi-stage navigation tasks, traffic controls, and drivable area constraints. A shared recovery-assisted protocol measures behavioral violations and the dependence on expert intervention over extended rollouts. Experiments conducted on the QCar2 platform with an onboard NVIDIA AGX Orin reveal that the QCarVLA policy reduces end-to-end inference latency from 11.46 s to 3.83 s, approximately 3.0× speedup over OpenDriveVLA. These results highlight the computational benefits of compact trajectory representations and establish a common framework for assessing their trade-offs with sustained driving performance.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="method">
+  <section class="section" id="benchmark">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Method</h2>
+      <h2 class="title is-3 has-text-centered">Benchmark</h2>
+      <div class="columns is-vcentered benchmark-overview">
+        <div class="column is-5">
+          <figure>
+            <a href="assets/benchmark-map-combined.png" target="_blank" rel="noopener" aria-label="View full-resolution benchmark map">
+              <img src="assets/benchmark-map-combined.png" width="4496" height="5536" alt="Benchmark map with numbered task regions, colored stop-sign and traffic-light locations, and hatched off-road regions." loading="lazy">
+            </a>
+            <figcaption class="figure-caption">Task regions, configurable traffic elements, and off-road boundaries in the shared benchmark environment.</figcaption>
+          </figure>
+        </div>
+        <div class="column is-7 content">
+          <p>The benchmark spans <strong>19 multi-stage navigation routes</strong> in simulation and on physical QCar2 hardware. Vehicles visit pickup, stop, and drop-off regions in order before returning to the hub. Its common evaluation interface supports vehicles of appropriate scale without prescribing a particular sensor configuration.</p>
+          <ul>
+            <li><strong>Held-out evaluation:</strong> 13 training routes and six held-out routes; demonstrations use two traffic configurations, with the third reserved for closed-loop testing.</li>
+            <li><strong>Task service:</strong> remain within a 0.20 m task region at no more than 0.05 m/s for three continuous seconds.</li>
+            <li><strong>Scoring:</strong> traffic and task violations, off-road duration, road-centering error, and dependence on privileged recovery.</li>
+            <li><strong>Rollouts:</strong> the scored interval starts at the designated gate; each rollout ends on route completion or a 600-second timeout.</li>
+          </ul>
+        </div>
+      </div>
+      <h3 class="title is-4">Recovery-assisted closed-loop evaluation</h3>
+      <p class="table-intro">Mean per-rollout measurements across six held-out routes and three traffic seeds in the held-out traffic configuration. Lower is better for all metrics; best values are <strong>bold</strong> and second-best values are <u>underlined</u>.</p>
+      <div class="table-container" tabindex="0" role="region" aria-label="Closed-loop benchmark comparison; scroll horizontally to view all metrics">
+        <table class="table is-fullwidth paper-table benchmark-table">
+          <caption>Recovery-assisted closed-loop evaluation in simulation and on hardware.</caption>
+          <thead>
+            <tr><th rowspan="2" scope="col">Method</th><th colspan="4" scope="colgroup">Simulation</th><th colspan="4" scope="colgroup">Hardware</th></tr>
+            <tr><th scope="col">Traffic<br>violations</th><th scope="col">Off-road<br>duration (s)</th><th scope="col">Task<br>violations</th><th scope="col">Recovery<br>duration (s)</th><th scope="col">Traffic<br>violations</th><th scope="col">Off-road<br>duration (s)</th><th scope="col">Task<br>violations</th><th scope="col">Recovery<br>duration (s)</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">OpenDriveVLA</th><td><u>3.72</u></td><td>16.6</td><td><strong>1.33</strong></td><td><u>31.1</u></td><td><u>0.889</u></td><td><strong>17.0</strong></td><td>1.22</td><td><u>34.5</u></td></tr>
+            <tr><th scope="row">DriveVLA-W0</th><td>4.06</td><td><strong>7.06</strong></td><td>2.61</td><td>31.8</td><td>1.021</td><td>18.1</td><td><u>0.76</u></td><td>36.7</td></tr>
+            <tr><th scope="row"><strong>QCarVLA</strong></th><td><strong>3.61</strong></td><td><u>7.15</u></td><td><u>2.44</u></td><td><strong>27.1</strong></td><td><strong>0.667</strong></td><td><u>17.9</u></td><td><strong>0.50</strong></td><td><strong>18.6</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="content">
-        <p>QCarVLA adapts OpenDriveVLA to the sensing geometry and computational constraints of QCar2. A shared FastViT backbone processes four surrounding camera views, supplying scene tokens and BEVFormer map context. The bird’s-eye-view representation covers ±5 m around the vehicle on a 200 × 200 grid.</p>
-        <p>A conditional flow-matching decoder combines environment, ego-state, and language context to predict six waypoints over a three-second horizon. Four integration steps refine the trajectory, and an NMPC controller tracks it while the policy predicts asynchronously. Feature distillation and auxiliary discrete motion supervision support training.</p>
+        <p class="evaluation-note">All policies share an NMPC tracking interface and recovery controller. Recovery starts beyond 0.30 m cross-track error and releases control after error stays below 0.05 m for more than one second. Violations during recovery remain in the score. Recovery-assisted completion is not equivalent to unassisted task success.</p>
+        <p>On held-out simulation trajectories, the reported QCarVLA configuration reduces final displacement error from 0.2121 m to 0.1694 m compared with OpenDriveVLA (20.1%). In closed loop, mean simulation recovery duration falls from 31.1 s to 27.1 s (12.9%); improvements do not extend uniformly to every task-compliance metric.</p>
       </div>
     </div>
   </section>
 
-  <section class="section hero is-light" id="benchmark">
+  <section class="section hero is-light" id="method">
     <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Benchmark</h2>
+      <h2 class="title is-3 has-text-centered">Method</h2>
+      <figure class="method-figure">
+        <a href="assets/qcarvla-architecture.png" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA architecture">
+          <img src="assets/qcarvla-architecture.png" width="2031" height="1056" alt="QCarVLA architecture: multi-view perception, primitive autoregression, residual flow refinement, and NMPC vehicle control, with autoregressive, consistency, and flow-matching training objectives." loading="lazy">
+        </a>
+        <figcaption class="figure-caption">The model predicts six motion primitives, refines the decoded trajectory using post-token language states, and samples waypoints for NMPC tracking. Snowflakes mark fixed components; flames mark jointly optimized components.</figcaption>
+      </figure>
       <div class="content">
-        <p>The benchmark contains 19 routes: 13 for training and six held out for evaluation. Two traffic configurations are used for demonstration collection, with a third held out for closed-loop testing. The same task protocol is used in simulation and on physical hardware.</p>
-        <p>Each rollout begins at node 10, visits pickup, stop, and drop-off regions in order, and returns to the starting region. The vehicle must stop for three continuous seconds at each task region. The server records at 10 Hz, with a two-minute timeout.</p>
-        <p>Evaluation measures task completion, stop-sign and traffic-light compliance, off-road time, cross-track error, recovery interventions, and onboard computation. A shared recovery policy assists major deviations; intervention counts are reported alongside route completion.</p>
+        <ul class="method-highlights">
+          <li><strong>Four-camera, platform-scaled perception.</strong> The pretrained ResNet-101 image backbone remains frozen. Scene and BEV map tokens are projected into the language backbone, using a 200 × 200 BEV grid spanning ±5 m around the vehicle.</li>
+          <li><strong>Compact motion planning.</strong> The Qwen2.5-0.5B backbone autoregressively predicts six 0.5-second motion primitives from a fixed 512-entry vocabulary. Their composition yields 30 future poses over a three-second horizon.</li>
+          <li><strong>Continuous residual refinement.</strong> A four-block transformer conditions on six post-primitive hidden states and integrates a residual flow in four Euler steps. The residual adjusts the discrete plan beyond its fixed primitive geometries.</li>
+          <li><strong>Consistency-guided training and deployment.</strong> Autoregressive supervision, primitive consistency, and residual flow matching are optimized jointly. The refined trajectory is sampled into six waypoints for an NMPC controller; policy prediction runs asynchronously from vehicle control.</li>
+        </ul>
+      </div>
+      <h3 class="title is-4" id="onboard-profile">Onboard computation</h3>
+      <div class="table-container" tabindex="0" role="region" aria-label="Onboard AGX Orin component profiling">
+        <table class="table is-fullwidth paper-table">
+          <caption>Component-level profiling on the onboard AGX Orin. Latencies are in milliseconds; memory is peak CUDA-allocated memory.</caption>
+          <thead><tr><th scope="col">Variant</th><th scope="col">Context (ms)</th><th scope="col">Prediction (ms)</th><th scope="col">End-to-end (ms)</th><th scope="col">Memory (GiB)</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">OpenDriveVLA (four-camera reference)</th><td>3028.83</td><td>8429.68</td><td>11458.51</td><td>2.29</td></tr>
+            <tr><th scope="row">DriveVLA-W0</th><td>3250.79</td><td>1734.54</td><td>4985.33</td><td>18.74</td></tr>
+            <tr><th scope="row">QCarVLA + Primitive AR</th><td>3218.04</td><td>611.23</td><td>3829.28</td><td>3.77</td></tr>
+            <tr><th scope="row">QCarVLA + Hybrid</th><td>3279.11</td><td>945.24</td><td>4224.35</td><td>4.11</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="content">
+        <p>The primitive-AR variant reduces end-to-end latency from 11.46 s to 3.83 s (approximately 3.0×). Adding residual refinement gives a full hybrid latency of 4.22 s. These timings exclude sensor acquisition and controller execution. Prediction remains a multi-second operation, and peak allocated memory is higher than the OpenDriveVLA reference.</p>
       </div>
     </div>
   </section>
@@ -123,16 +183,26 @@
   <section class="section" id="demos">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Demos</h2>
-      <p class="has-text-centered">Simulation and physical QCar2 videos coming soon.</p>
-      <!-- Add the template’s video blocks here once project footage is ready. -->
-    </div>
-  </section>
-
-  <section class="section hero is-light" id="results">
-    <div class="container is-max-desktop">
-      <h2 class="title is-3 has-text-centered">Results</h2>
-      <p class="has-text-centered">Benchmark comparisons, ablations, and onboard inference measurements coming soon.</p>
-      <!-- Add finalized result tables and figures here. -->
+      <p class="has-text-centered demo-intro">Closed-loop driving in simulation and on physical QCar2 hardware.</p>
+      <div class="demo-grid">
+        <figure class="demo-slot" data-demo-id="simulation-01">
+          <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
+          <figcaption><h3 class="title is-5 demo-title">Simulation · Demo 1</h3><p class="demo-description">Simulation rollout. Video coming soon.</p></figcaption>
+        </figure>
+        <figure class="demo-slot" data-demo-id="simulation-02">
+          <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
+          <figcaption><h3 class="title is-5 demo-title">Simulation · Demo 2</h3><p class="demo-description">Simulation rollout. Video coming soon.</p></figcaption>
+        </figure>
+        <figure class="demo-slot" data-demo-id="hardware-01">
+          <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
+          <figcaption><h3 class="title is-5 demo-title">Physical QCar2 · Demo 1</h3><p class="demo-description">Hardware rollout. Video coming soon.</p></figcaption>
+        </figure>
+        <figure class="demo-slot" data-demo-id="hardware-02">
+          <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
+          <figcaption><h3 class="title is-5 demo-title">Physical QCar2 · Demo 2</h3><p class="demo-description">Hardware rollout. Video coming soon.</p></figcaption>
+        </figure>
+      </div>
+      <noscript><p>Enable JavaScript to load available demo videos.</p></noscript>
     </div>
   </section>
 
@@ -158,7 +228,7 @@
       <div class="column is-8">
         <div class="content">
           <p>This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template/tree/original-version">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/">Nerfies</a>. Website template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
-          <p>QCarVLA content and benchmark figure from the manuscript. <a href="https://github.com/York-SDCNLab">York-SDCNLab</a>.</p>
+          <p>QCarVLA text, architecture, and benchmark figures from the manuscript. <a href="https://github.com/York-SDCNLab">York-SDCNLab</a>.</p>
         </div>
       </div>
     </div>
