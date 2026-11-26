@@ -21,8 +21,8 @@
     "id": "hardware-01",
     "title": "Physical QCar2 · Demo 1",
     "src": "hardware-01.mp4",
-    "enabled": false,
-    "description": "Hardware rollout. Video coming soon.",
+    "enabled": true,
+    "description": "LeanVLA-Hybrid hardware rollout on test route perspective view",
     "poster": null,
     "captions": null
   },
@@ -30,8 +30,8 @@
     "id": "hardware-02",
     "title": "Physical QCar2 · Demo 2",
     "src": "hardware-02.mp4",
-    "enabled": false,
-    "description": "Hardware rollout. Video coming soon.",
+    "enabled": true,
+    "description": "LeanVLA-Hybrid hardware rollout on test route bird's-eye view",
     "poster": null,
     "captions": null
   }
