@@ -1,4 +1,4 @@
-# QCarVLA demo videos
+# LeanVLA demo videos
 
 This directory supplies the four demo positions on the project page. Add real project footage here; the page currently contains placeholders.
 

@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="QCarVLA: Scalable VLA Design for Mobile Robots. Vision-language-action policies and closed-loop evaluation on QCar2.">
-  <meta property="og:title" content="QCarVLA: Scalable VLA Design for Mobile Robots">
+  <meta name="description" content="LeanVLA: Efficient Trajectory Generation for Edge Robotics. Vision-language-action policies and closed-loop evaluation on QCar2.">
+  <meta property="og:title" content="LeanVLA: Efficient Trajectory Generation for Edge Robotics">
   <meta property="og:description" content="Four-camera environment encoding and language-conditioned trajectory prediction for embedded mobile robots.">
   <meta property="og:type" content="website">
-  <title>QCarVLA: Scalable VLA Design for Mobile Robots</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23363636'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-size='23' fill='white'%3EQ%3C/text%3E%3C/svg%3E">
+  <title>LeanVLA: Efficient Trajectory Generation for Edge Robotics</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='5' fill='%23363636'/%3E%3Ctext x='16' y='23' text-anchor='middle' font-family='Arial,sans-serif' font-size='23' fill='white'%3EL%3C/text%3E%3C/svg%3E">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans%7CNoto+Sans" rel="stylesheet">
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="static/css/index.css">
   <link rel="stylesheet" href="static/css/project.css?v=20261123-instant">
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script defer src="static/js/project.js"></script>
+  <script defer src="static/js/project.js?v=20261125-leanvla"></script>
 </head>
 <body>
 <main>
@@ -24,7 +24,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">QCarVLA: Scalable VLA Design for Mobile Robots</h1>
+            <h1 class="title is-1 publication-title">LeanVLA: Efficient Trajectory Generation for Edge Robotics</h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">Anonymous Authors</span>
             </div>
@@ -65,10 +65,10 @@
     <div class="container is-max-desktop">
       <div class="hero-body">
         <figure>
-          <a href="assets/qcarvla-overview-horizontal.png?v=20261123-uniform-thin" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA overview">
-            <img src="assets/qcarvla-overview-horizontal.png?v=20261123-uniform-thin" alt="QCarVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a motion-primitive planner, followed by continuous residual refinement." fetchpriority="high">
+          <a href="assets/leanvla-overview-horizontal.png?v=20261125-leanvla" target="_blank" rel="noopener" aria-label="View full-resolution LeanVLA overview">
+            <img src="assets/leanvla-overview-horizontal.png?v=20261125-leanvla" alt="LeanVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a motion-primitive planner, followed by continuous residual refinement." fetchpriority="high">
           </a>
-          <figcaption class="subtitle has-text-centered">QCarVLA combines compact motion-primitive prediction with continuous residual refinement for language-guided driving.</figcaption>
+          <figcaption class="subtitle has-text-centered">LeanVLA combines compact motion-primitive prediction with continuous residual refinement for language-guided driving.</figcaption>
         </figure>
       </div>
     </div>
@@ -81,8 +81,8 @@
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
             <p>Vision-language-action (VLA) policies offer a unified approach to combining visual scene understanding with language-guided driving. However, their computational demands make onboard deployment difficult, and their long-horizon closed-loop performance on embedded mobile robots remains insufficiently characterized. Short-horizon trajectory accuracy alone does not establish whether these policies can sustain task execution under onboard sensing and computational constraints.</p>
-            <p>We present QCarVLA, an embedded driving framework that jointly investigates efficient trajectory generation and sustained closed-loop driving performance. Building on a pretrained driving VLA architecture, QCarVLA adapts visual context to four surround-view cameras and a platform-scaled bird&#x27;s-eye-view geometry. The trajectory predictor combines autoregressive motion primitive generation with language-conditioned flow-based residual refinement. The compact motion primitive prediction reduces the overhead of autoregressive decoding while continuous refinement from the flow residuals mitigates quantization errors from a finite motion primitive vocabulary.</p>
-            <p>We also introduce a reproducible benchmark spanning simulation and physical hardware. This benchmark contains multi-stage navigation tasks, traffic controls, and drivable area constraints. A shared recovery-assisted protocol measures behavioral violations and the dependence on expert intervention over extended rollouts. Experiments conducted on the QCar2 platform with an onboard NVIDIA AGX Orin reveal that the QCarVLA policy reduces end-to-end inference latency from 11.46 s to 3.83 s, approximately 3.0× speedup over OpenDriveVLA. These results highlight the computational benefits of compact trajectory representations and establish a common framework for assessing their trade-offs with sustained driving performance.</p>
+            <p>We present LeanVLA, an embedded driving framework that jointly investigates efficient trajectory generation and sustained closed-loop driving performance. Building on a pretrained driving VLA architecture, LeanVLA adapts visual context to four surround-view cameras and a platform-scaled bird&#x27;s-eye-view geometry. The trajectory predictor combines autoregressive motion primitive generation with language-conditioned flow-based residual refinement. The compact motion primitive prediction reduces the overhead of autoregressive decoding while continuous refinement from the flow residuals mitigates quantization errors from a finite motion primitive vocabulary.</p>
+            <p>We also introduce a reproducible benchmark spanning simulation and physical hardware. This benchmark contains multi-stage navigation tasks, traffic controls, and drivable area constraints. A shared recovery-assisted protocol measures behavioral violations and the dependence on expert intervention over extended rollouts. Experiments conducted on the QCar2 platform with an onboard NVIDIA AGX Orin reveal that the LeanVLA policy reduces end-to-end inference latency from 11.46 s to 3.83 s, approximately 3.0× speedup over OpenDriveVLA. These results highlight the computational benefits of compact trajectory representations and establish a common framework for assessing their trade-offs with sustained driving performance.</p>
           </div>
         </div>
       </div>
@@ -120,10 +120,10 @@
           <tbody>
             <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Simulation<sup>*</sup></th><th scope="row">OpenDriveVLA</th><td>0.0896</td><td>0.2121</td><td>0.3285</td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>0.0989</td><td>0.2187</td><td>0.3447</td></tr>
-            <tr><th scope="row"><strong>QCarVLA (ours)</strong></th><td><strong>0.0784</strong></td><td><strong>0.1694</strong></td><td><strong>0.2314</strong></td></tr>
+            <tr><th scope="row"><strong>LeanVLA (ours)</strong></th><td><strong>0.0784</strong></td><td><strong>0.1694</strong></td><td><strong>0.2314</strong></td></tr>
             <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Hardware</th><th scope="row">OpenDriveVLA</th><td>0.0935</td><td>0.2261</td><td>0.3197</td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>0.1007</td><td>0.2174</td><td>0.3408</td></tr>
-            <tr><th scope="row"><strong>QCarVLA (ours)</strong></th><td><strong>0.0863</strong></td><td><strong>0.1871</strong></td><td><strong>0.2929</strong></td></tr>
+            <tr><th scope="row"><strong>LeanVLA (ours)</strong></th><td><strong>0.0863</strong></td><td><strong>0.1871</strong></td><td><strong>0.2929</strong></td></tr>
           </tbody>
         </table>
       </div>
@@ -141,13 +141,13 @@
           <tbody>
             <tr><th scope="row">OpenDriveVLA</th><td><u>3.72</u></td><td>16.6</td><td><strong>1.33</strong></td><td><u>31.1</u></td><td><u>0.889</u></td><td><strong>17.0</strong></td><td>1.22</td><td><u>34.5</u></td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>4.06</td><td><strong>7.06</strong></td><td>2.61</td><td>31.8</td><td>1.021</td><td>18.1</td><td><u>0.76</u></td><td>36.7</td></tr>
-            <tr><th scope="row"><strong>QCarVLA</strong></th><td><strong>3.61</strong></td><td><u>7.15</u></td><td><u>2.44</u></td><td><strong>27.1</strong></td><td><strong>0.667</strong></td><td><u>17.9</u></td><td><strong>0.50</strong></td><td><strong>18.6</strong></td></tr>
+            <tr><th scope="row"><strong>LeanVLA</strong></th><td><strong>3.61</strong></td><td><u>7.15</u></td><td><u>2.44</u></td><td><strong>27.1</strong></td><td><strong>0.667</strong></td><td><u>17.9</u></td><td><strong>0.50</strong></td><td><strong>18.6</strong></td></tr>
           </tbody>
         </table>
       </div>
       <div class="content">
         <p class="evaluation-note">All policies share an NMPC tracking interface and recovery controller. Recovery starts beyond 0.30 m cross-track error and releases control after error stays below 0.05 m for more than one second. Violations during recovery remain in the score. Recovery-assisted completion is not equivalent to unassisted task success.</p>
-        <p>On held-out simulation trajectories, the reported QCarVLA configuration reduces final displacement error from 0.2121 m to 0.1694 m compared with OpenDriveVLA (20.1%). In closed loop, mean simulation recovery duration falls from 31.1 s to 27.1 s (12.9%); improvements do not extend uniformly to every task-compliance metric.</p>
+        <p>On held-out simulation trajectories, the reported LeanVLA configuration reduces final displacement error from 0.2121 m to 0.1694 m compared with OpenDriveVLA (20.1%). In closed loop, mean simulation recovery duration falls from 31.1 s to 27.1 s (12.9%); improvements do not extend uniformly to every task-compliance metric.</p>
       </div>
     </div>
   </section>
@@ -156,8 +156,8 @@
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Method</h2>
       <figure class="method-figure">
-        <a href="assets/qcarvla-architecture.png" target="_blank" rel="noopener" aria-label="View full-resolution QCarVLA architecture">
-          <img src="assets/qcarvla-architecture.png" width="2031" height="1056" alt="QCarVLA architecture: multi-view perception, primitive autoregression, residual flow refinement, and NMPC vehicle control, with autoregressive, consistency, and flow-matching training objectives." loading="lazy">
+        <a href="assets/leanvla-architecture.png?v=20261125-leanvla" target="_blank" rel="noopener" aria-label="View full-resolution LeanVLA architecture">
+          <img src="assets/leanvla-architecture.png?v=20261125-leanvla" width="1739" height="904" alt="LeanVLA architecture: multi-view perception, primitive autoregression, residual flow refinement, and NMPC vehicle control, with autoregressive, consistency, and flow-matching training objectives." loading="lazy">
         </a>
         <figcaption class="figure-caption">The model predicts six motion primitives, refines the decoded trajectory using post-token language states, and samples waypoints for NMPC tracking. Snowflakes mark fixed components; flames mark jointly optimized components.</figcaption>
       </figure>
@@ -177,8 +177,8 @@
           <tbody>
             <tr><th scope="row">OpenDriveVLA (four-camera reference)</th><td>3028.83</td><td>8429.68</td><td>11458.51</td><td>2.29</td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>3250.79</td><td>1734.54</td><td>4985.33</td><td>18.74</td></tr>
-            <tr><th scope="row">QCarVLA + Primitive AR</th><td>3218.04</td><td>611.23</td><td>3829.28</td><td>3.77</td></tr>
-            <tr><th scope="row">QCarVLA + Hybrid</th><td>3279.11</td><td>945.24</td><td>4224.35</td><td>4.11</td></tr>
+            <tr><th scope="row">LeanVLA + Primitive AR</th><td>3218.04</td><td>611.23</td><td>3829.28</td><td>3.77</td></tr>
+            <tr><th scope="row">LeanVLA + Hybrid</th><td>3279.11</td><td>945.24</td><td>4224.35</td><td>4.11</td></tr>
           </tbody>
         </table>
       </div>
@@ -218,8 +218,8 @@
     <div class="container is-max-desktop content">
       <h2 class="title is-3">BibTeX</h2>
       <p>Provisional citation for the manuscript in preparation.</p>
-      <pre><code>@unpublished{qcarvla2026,
-  title  = {QCarVLA: Scalable VLA Design for Mobile Robots},
+      <pre><code>@unpublished{leanvla2026,
+  title  = {LeanVLA: Efficient Trajectory Generation for Edge Robotics},
   author = {{Anonymous Authors}},
   year   = {2026},
   note   = {Manuscript in preparation}
@@ -234,7 +234,7 @@
       <div class="column is-8">
         <div class="content">
           <p>This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template/tree/original-version">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/">Nerfies</a>. Website template licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
-          <p>QCarVLA text, architecture, and benchmark figures from the manuscript.</p>
+          <p>LeanVLA text, architecture, and benchmark figures from the manuscript.</p>
         </div>
       </div>
     </div>

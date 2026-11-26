@@ -31,7 +31,7 @@ async function loadDemos() {
       video.controls = true;
       video.playsInline = true;
       video.preload = "metadata";
-      video.setAttribute("aria-label", demo.title || "QCarVLA driving demo");
+      video.setAttribute("aria-label", demo.title || "LeanVLA driving demo");
       video.append("Your browser does not support HTML video.");
       if (demo.poster) video.poster = new URL(demo.poster, configUrl).href;
       if (demo.captions) {

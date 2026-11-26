@@ -16,10 +16,10 @@ The output connector from the hybrid-plan sum to the three-second prediction was
 
 Make one small precision edit to this existing QCarVLA diagram. The final black output connector from the circled plus sign to the right-hand 3-second prediction photograph is visibly too thick. It runs horizontally along the bottom of the middle panel, turns upward beside the photograph, and ends in a right-pointing arrowhead at the photograph's left edge. THIN THIS ENTIRE L-SHAPED OUTPUT CONNECTOR and shrink its arrowhead to match exactly the thin stroke weight and small arrowhead used by the nearby Flow Decoder-to-plus and Primitive Decoder-to-plus input arrows (approximately 1.5 pixels at this 2060×763 resolution). No bold/doubled stroke or oversized arrowhead. All segments of this final connector must have the same thin width. Keep its current route, source at the summed hybrid plan, and destination at the photograph. Preserve every other pixel/content as closely as possible: same canvas, labels, all other connector routes, the correct parallel encoder-to-Scene and encoder-to-Map branches, colors, text, token boxes, dashed boundaries, and photograph with its trajectory overlays. Do NOT redraw the full figure, change the camera view, add any arrows, or move any element. Change only the line weight and arrowhead size of the final output connector.
 
-- Saved figure: `site/assets/qcarvla-overview-horizontal.png`
-- Unmodified original: `site/assets/qcarvla-overview-original.png`
+- Saved figure: `site/assets/leanvla-overview-horizontal.png`
+- Unmodified original: `docs/source-figures/qcarvla-overview-original.png`
 - Tool: built-in `image_gen.imagegen`, edit mode; no CLI fallback.
-- This is an illustrative layout adaptation. The original is retained in the repository for inspection of the original camera view and trajectory overlays. The method architecture and benchmark map are copied directly from the manuscript.
+- This is an illustrative layout adaptation. The original is retained in the repository for inspection of the original camera view and trajectory overlays. The benchmark map is copied directly from the manuscript; the method architecture heading was updated to LeanVLA during the project-name change.
 
 ## Visual-context correction
 

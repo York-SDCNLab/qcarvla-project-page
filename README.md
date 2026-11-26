@@ -1,6 +1,6 @@
-# QCarVLA project page
+# LeanVLA project page
 
-A simple project page for **QCarVLA: Scalable VLA Design for Mobile Robots**, under York-SDCNLab.
+A simple project page for **LeanVLA: Efficient Trajectory Generation for Edge Robotics**, under York-SDCNLab.
 
 - Website: https://york-sdcnlab.github.io/qcarvla-project-page/
 - Repository: https://github.com/York-SDCNLab/QCAR-VLA/
