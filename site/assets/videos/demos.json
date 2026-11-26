@@ -4,7 +4,7 @@
     "title": "Simulation · Demo 1",
     "src": "simulation-01.mp4",
     "enabled": true,
-    "description": "  ",
+    "description": "Privileged NMPC policy with policy predictions overlayed at each step. Prompt is simplified for visualization.",
     "poster": null,
     "captions": null
   },
@@ -13,7 +13,7 @@
     "title": "Hardware · Demo 1",
     "src": "simulation-02.mp4",
     "enabled": true,
-    "description": "  ",
+    "description": "Perspective view of test configuration route U with simplified prompt instructions",
     "poster": null,
     "captions": null
   },
@@ -22,7 +22,7 @@
     "title": "Physical QCar2 · Demo 2 - Perspective",
     "src": "hardware-01.mp4",
     "enabled": true,
-    "description": "  ",
+    "description": "Perspective view of test configuration route F with simplified prompt instructions",
     "poster": null,
     "captions": null
   },
@@ -31,7 +31,7 @@
     "title": "Physical QCar2 · Demo 2 - Bird's-eye view",
     "src": "hardware-02.mp4",
     "enabled": true,
-    "description": "  ",
+    "description": "Bird's-eye-view of same Demo 2 route.",
     "poster": null,
     "captions": null
   }
