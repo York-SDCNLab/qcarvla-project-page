@@ -10,28 +10,28 @@
   },
   {
     "id": "simulation-02",
-    "title": "Simulation · Demo 2",
+    "title": "Hardware · Demo 1",
     "src": "simulation-02.mp4",
     "enabled": false,
-    "description": "Simulation rollout. Video coming soon.",
+    "description": "",
     "poster": null,
     "captions": null
   },
   {
     "id": "hardware-01",
-    "title": "Physical QCar2 · Demo 1",
+    "title": "Physical QCar2 · Demo 2 - Perspective",
     "src": "hardware-01.mp4",
     "enabled": true,
-    "description": "LeanVLA-Hybrid hardware rollout on test route perspective view",
+    "description": "",
     "poster": null,
     "captions": null
   },
   {
     "id": "hardware-02",
-    "title": "Physical QCar2 · Demo 2",
+    "title": "Physical QCar2 · Demo 2 - Bird's-eye view",
     "src": "hardware-02.mp4",
     "enabled": true,
-    "description": "LeanVLA-Hybrid hardware rollout on test route bird's-eye view",
+    "description": "",
     "poster": null,
     "captions": null
   }
