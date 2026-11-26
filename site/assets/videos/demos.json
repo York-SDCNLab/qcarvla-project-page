@@ -3,8 +3,8 @@
     "id": "simulation-01",
     "title": "Simulation · Demo 1",
     "src": "simulation-01.mp4",
-    "enabled": false,
-    "description": "Simulation rollout. Video coming soon.",
+    "enabled": true,
+    "description": "  ",
     "poster": null,
     "captions": null
   },
@@ -12,8 +12,8 @@
     "id": "simulation-02",
     "title": "Hardware · Demo 1",
     "src": "simulation-02.mp4",
-    "enabled": false,
-    "description": "",
+    "enabled": true,
+    "description": "  ",
     "poster": null,
     "captions": null
   },
@@ -22,7 +22,7 @@
     "title": "Physical QCar2 · Demo 2 - Perspective",
     "src": "hardware-01.mp4",
     "enabled": true,
-    "description": "",
+    "description": "  ",
     "poster": null,
     "captions": null
   },
@@ -31,7 +31,7 @@
     "title": "Physical QCar2 · Demo 2 - Bird's-eye view",
     "src": "hardware-02.mp4",
     "enabled": true,
-    "description": "",
+    "description": "  ",
     "poster": null,
     "captions": null
   }
