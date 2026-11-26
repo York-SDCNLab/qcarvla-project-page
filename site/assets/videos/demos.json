@@ -1,37 +1,37 @@
 [
   {
     "id": "simulation-01",
-    "title": "Simulation · Demo 1",
+    "title": "Simulation · Expert control with LeanVLA predictions",
     "src": "simulation-01.mp4",
     "enabled": true,
-    "description": "Privileged NMPC policy with policy predictions overlayed at each step. Prompt is simplified for visualization.",
+    "description": "Privileged NMPC expert controls the vehicle; LeanVLA trajectory predictions are overlaid at each step. The displayed instruction is simplified for visualization.",
     "poster": null,
     "captions": null
   },
   {
     "id": "simulation-02",
-    "title": "Hardware · Demo 1",
+    "title": "Hardware Deployment · Route U",
     "src": "simulation-02.mp4",
     "enabled": true,
-    "description": "Perspective view of test configuration route U with simplified prompt instructions",
+    "description": "Learned-policy execution on test configuration route U, shown from the perspective camera with task-region overlays and simplified instructions.",
     "poster": null,
     "captions": null
   },
   {
     "id": "hardware-01",
-    "title": "Physical QCar2 · Demo 2 - Perspective",
+    "title": "Hardware Deployment · Route F — Perspective",
     "src": "hardware-01.mp4",
     "enabled": true,
-    "description": "Perspective view of test configuration route F with simplified prompt instructions",
+    "description": "Learned-policy execution on test configuration route F, shown from the perspective camera with key-event annotations.",
     "poster": null,
     "captions": null
   },
   {
     "id": "hardware-02",
-    "title": "Physical QCar2 · Demo 2 - Bird's-eye view",
+    "title": "Hardware Deployment · Route F — Bird’s-eye view",
     "src": "hardware-02.mp4",
     "enabled": true,
-    "description": "Bird's-eye-view of same Demo 2 route.",
+    "description": "Bird’s-eye view of the same route F hardware rollout, with task-region overlays and simplified instructions.",
     "poster": null,
     "captions": null
   }

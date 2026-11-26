@@ -44,17 +44,18 @@
                     <span class="icon"><i class="fab fa-github" aria-hidden="true"></i></span>
                     <span>Code</span>
                   </button>
-                  <span class="resource-tooltip" id="code-status" role="tooltip">Coming soon</span>
+                  <span class="resource-tooltip" id="code-status" role="tooltip">Planned for release upon acceptance</span>
                 </span>
                 <span class="link-block resource-link">
                   <button type="button" class="button is-normal is-rounded is-dark resource-unavailable" aria-disabled="true" aria-describedby="dataset-status">
                     <span class="icon"><i class="fas fa-database" aria-hidden="true"></i></span>
                     <span>Dataset</span>
                   </button>
-                  <span class="resource-tooltip" id="dataset-status" role="tooltip">Coming soon</span>
+                  <span class="resource-tooltip" id="dataset-status" role="tooltip">Planned for release upon acceptance</span>
                 </span>
               </div>
             </div>
+            <p class="is-size-6">The benchmark, training dataset, model checkpoints, and lightweight training code are planned for release upon acceptance.</p>
           </div>
         </div>
       </div>
@@ -66,9 +67,10 @@
       <div class="hero-body">
         <figure>
           <a href="assets/leanvla-overview-horizontal.png?v=20261125-leanvla" target="_blank" rel="noopener" aria-label="View full-resolution LeanVLA overview">
-            <img src="assets/leanvla-overview-horizontal.png?v=20261125-leanvla" alt="LeanVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a motion-primitive planner, followed by continuous residual refinement." fetchpriority="high">
+            <img src="assets/leanvla-overview-horizontal.png?v=20261125-leanvla" alt="LeanVLA overview: the four-camera encoder feeds scene and map projectors in parallel. Their context and driving instructions feed a six-primitive planner. Six post-primitive hidden states condition continuous residual refinement." fetchpriority="high">
           </a>
-          <figcaption class="subtitle has-text-centered">LeanVLA combines compact motion-primitive prediction with continuous residual refinement for language-guided driving.</figcaption>
+          <figcaption class="subtitle has-text-centered">LeanVLA combines six autoregressive motion primitives with continuous residual refinement. A shared simulation and hardware benchmark evaluates trajectory accuracy, driving behavior, recovery dependence, and onboard computational cost.</figcaption>
+          <p class="figure-caption">Flow decoder context <em>C</em> consists of six post-primitive hidden states from the language backbone.</p>
         </figure>
       </div>
     </div>
@@ -80,9 +82,9 @@
         <div class="column is-four-fifths">
           <h2 class="title is-3">Abstract</h2>
           <div class="content has-text-justified">
-            <p>Vision-language-action (VLA) policies offer a unified approach to combining visual scene understanding with language-guided driving. However, their computational demands make onboard deployment difficult, and their long-horizon closed-loop performance on embedded mobile robots remains insufficiently characterized. Short-horizon trajectory accuracy alone does not establish whether these policies can sustain task execution under onboard sensing and computational constraints.</p>
+            <p>Vision-language-action (VLA) policies are computationally demanding, and short-horizon prediction accuracy does not establish sustained closed-loop performance on edge hardware.</p>
             <p>We present LeanVLA, an embedded driving framework that jointly investigates efficient trajectory generation and sustained closed-loop driving performance. Building on a pretrained driving VLA architecture, LeanVLA adapts visual context to four surround-view cameras and a platform-scaled bird&#x27;s-eye-view geometry. The trajectory predictor combines autoregressive motion primitive generation with language-conditioned flow-based residual refinement. The compact motion primitive prediction reduces the overhead of autoregressive decoding while continuous refinement from the flow residuals mitigates quantization errors from a finite motion primitive vocabulary.</p>
-            <p>We also introduce a reproducible benchmark spanning simulation and physical hardware. This benchmark contains multi-stage navigation tasks, traffic controls, and drivable area constraints. A shared recovery-assisted protocol measures behavioral violations and the dependence on expert intervention over extended rollouts. Experiments conducted on the QCar2 platform with an onboard NVIDIA AGX Orin reveal that the LeanVLA policy reduces end-to-end inference latency from 11.46 s to 3.83 s, approximately 3.0× speedup over OpenDriveVLA. These results highlight the computational benefits of compact trajectory representations and establish a common framework for assessing their trade-offs with sustained driving performance.</p>
+            <p>We also introduce a reproducible benchmark spanning simulation and physical hardware. This benchmark contains multi-stage navigation tasks, traffic controls, and drivable area constraints. A shared recovery-assisted protocol measures behavioral violations and the dependence on expert intervention over extended rollouts. Experiments conducted on the QCar2 platform with an onboard NVIDIA AGX Orin reveal that the LeanVLA policy reduces end-to-end inference latency from 11.46 s to 4.22 s, a 2.71× speedup over OpenDriveVLA. These results highlight the computational benefits of compact trajectory representations and establish a common framework for assessing their trade-offs with sustained driving performance.</p>
           </div>
         </div>
       </div>
@@ -118,16 +120,19 @@
           <caption>Table II. Open-loop evaluations on held-out routes.</caption>
           <thead><tr><th scope="col">Domain</th><th scope="col">Method</th><th scope="col">ADE (m)</th><th scope="col">FDE (m)</th><th scope="col">MR</th></tr></thead>
           <tbody>
-            <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Simulation<sup>*</sup></th><th scope="row">OpenDriveVLA</th><td>0.0896</td><td>0.2121</td><td>0.3285</td></tr>
+            <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Simulation</th><th scope="row">OpenDriveVLA</th><td>0.0896</td><td>0.2121</td><td>0.3285</td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>0.0989</td><td>0.2187</td><td>0.3447</td></tr>
-            <tr><th scope="row"><strong>LeanVLA (ours)</strong></th><td><strong>0.0784</strong></td><td><strong>0.1694</strong></td><td><strong>0.2314</strong></td></tr>
+            <tr><th scope="row"><strong>LeanVLA-Hybrid (ours)</strong></th><td><strong>0.0784</strong></td><td><strong>0.1694</strong></td><td><strong>0.2314</strong></td></tr>
             <tr><th scope="rowgroup" rowspan="3" style="vertical-align: middle;">Hardware</th><th scope="row">OpenDriveVLA</th><td>0.0935</td><td>0.2261</td><td>0.3197</td></tr>
             <tr><th scope="row">DriveVLA-W0</th><td>0.1007</td><td>0.2174</td><td>0.3408</td></tr>
-            <tr><th scope="row"><strong>LeanVLA (ours)</strong></th><td><strong>0.0863</strong></td><td><strong>0.1871</strong></td><td><strong>0.2929</strong></td></tr>
+            <tr><th scope="row"><strong>LeanVLA-Hybrid (ours)</strong></th><td><strong>0.0863</strong></td><td><strong>0.1871</strong></td><td><strong>0.2929</strong></td></tr>
           </tbody>
         </table>
       </div>
-      <p class="evaluation-note" style="margin-bottom: 2rem;">* Simulation entries reproduce the historical results listed in the current manuscript draft.</p>
+      <div class="content">
+        <p>All methods use the same training examples, including expert recovery demonstrations. The simulation and hardware training sets contain 19,733 and 9,197 retained samples, respectively. Models receive four epochs of simulation fine-tuning followed by four epochs of hardware fine-tuning.</p>
+        <p>Open-loop evaluations and simulation rollouts run on an NVIDIA RTX A6000; closed-loop hardware deployment uses the QCar2’s onboard NVIDIA AGX Orin.</p>
+      </div>
 
       <h3 class="title is-4">Recovery-assisted closed-loop evaluation</h3>
       <p class="table-intro">Mean per-rollout measurements across six held-out routes and three traffic seeds in the held-out traffic configuration. Lower is better for all metrics; best values are <strong>bold</strong> and second-best values are <u>underlined</u>.</p>
@@ -140,14 +145,14 @@
           </thead>
           <tbody>
             <tr><th scope="row">OpenDriveVLA</th><td><u>3.72</u></td><td>16.6</td><td><strong>1.33</strong></td><td><u>31.1</u></td><td><u>0.889</u></td><td><strong>17.0</strong></td><td>1.22</td><td><u>34.5</u></td></tr>
-            <tr><th scope="row">DriveVLA-W0</th><td>4.06</td><td><strong>7.06</strong></td><td>2.61</td><td>31.8</td><td>1.021</td><td>18.1</td><td><u>0.76</u></td><td>36.7</td></tr>
-            <tr><th scope="row"><strong>LeanVLA</strong></th><td><strong>3.61</strong></td><td><u>7.15</u></td><td><u>2.44</u></td><td><strong>27.1</strong></td><td><strong>0.667</strong></td><td><u>17.9</u></td><td><strong>0.50</strong></td><td><strong>18.6</strong></td></tr>
+            <tr><th scope="row">DriveVLA-W0</th><td>4.06</td><td><strong>7.06</strong></td><td>2.61</td><td>31.8</td><td>1.056</td><td>18.1</td><td><u>0.76</u></td><td>36.7</td></tr>
+            <tr><th scope="row"><strong>LeanVLA-Hybrid</strong></th><td><strong>3.61</strong></td><td><u>7.15</u></td><td><u>2.44</u></td><td><strong>27.1</strong></td><td><strong>0.667</strong></td><td><u>17.9</u></td><td><strong>0.50</strong></td><td><strong>18.6</strong></td></tr>
           </tbody>
         </table>
       </div>
       <div class="content">
         <p class="evaluation-note">All policies share an NMPC tracking interface and recovery controller. Recovery starts beyond 0.30 m cross-track error and releases control after error stays below 0.05 m for more than one second. Violations during recovery remain in the score. Recovery-assisted completion is not equivalent to unassisted task success.</p>
-        <p>On held-out simulation trajectories, the reported LeanVLA configuration reduces final displacement error from 0.2121 m to 0.1694 m compared with OpenDriveVLA (20.1%). In closed loop, mean simulation recovery duration falls from 31.1 s to 27.1 s (12.9%); improvements do not extend uniformly to every task-compliance metric.</p>
+        <p>On held-out simulation trajectories, LeanVLA-Hybrid reduces final displacement error from 0.2121 m to 0.1694 m compared with OpenDriveVLA (20.1%). In closed loop, mean simulation recovery duration falls from 31.1 s to 27.1 s (12.9%); improvements do not extend uniformly to every task-compliance metric.</p>
       </div>
     </div>
   </section>
@@ -163,13 +168,15 @@
       </figure>
       <div class="content">
         <ul class="method-highlights">
-          <li><strong>Four-camera, platform-scaled perception.</strong> The pretrained ResNet-101 image backbone remains frozen. Scene and BEV map tokens are projected into the language backbone, using a 200 × 200 BEV grid spanning ±5 m around the vehicle.</li>
+          <li><strong>Four-camera, platform-scaled perception.</strong> The pretrained ResNet-101 image backbone remains frozen. Scene and BEV map tokens are inferred from camera observations and projected into the language backbone, using a 200 × 200 BEV grid spanning ±5 m around the vehicle.</li>
           <li><strong>Compact motion planning.</strong> The Qwen2.5-0.5B backbone autoregressively predicts six 0.5-second motion primitives from a fixed 512-entry vocabulary. Their composition yields 30 future poses over a three-second horizon.</li>
-          <li><strong>Continuous residual refinement.</strong> A four-block transformer conditions on six post-primitive hidden states and integrates a residual flow in four Euler steps. The residual adjusts the discrete plan beyond its fixed primitive geometries.</li>
-          <li><strong>Consistency-guided training and deployment.</strong> Autoregressive supervision, primitive consistency, and residual flow matching are optimized jointly. The refined trajectory is sampled into six waypoints for an NMPC controller; policy prediction runs asynchronously from vehicle control.</li>
+          <li><strong>Continuous residual refinement.</strong> A four-block transformer conditions on six final-layer hidden states after the language backbone consumes the primitive tokens and integrates a residual flow in four Euler steps. The residual continuously refines the selected primitive trajectory.</li>
+          <li><strong>Consistency-guided training and deployment.</strong> Autoregressive supervision, primitive consistency, and residual flow matching are optimized jointly. Consistency supervision encourages the refined segments to preserve the selected motion primitives. The refined trajectory is sampled into six waypoints for an NMPC controller.</li>
         </ul>
+        <p>Policy prediction runs asynchronously from vehicle control. If the vehicle reaches the final predicted waypoint before the next prediction is available, it remains stopped there until a new trajectory arrives.</p>
       </div>
       <h3 class="title is-4" id="onboard-profile">Onboard computation</h3>
+      <p class="table-intro">LeanVLA-Hybrid reduces end-to-end inference latency from 11.46 s to 4.22 s on the onboard AGX Orin, a 2.71× speedup over OpenDriveVLA. The primitive-only configuration reaches 3.83 s, approximately a 3.0× speedup.</p>
       <div class="table-container" tabindex="0" role="region" aria-label="Onboard AGX Orin component profiling">
         <table class="table is-fullwidth paper-table">
           <caption>Component-level profiling on the onboard AGX Orin. Latencies are in milliseconds; memory is peak CUDA-allocated memory.</caption>
@@ -183,7 +190,7 @@
         </table>
       </div>
       <div class="content">
-        <p>The primitive-AR variant reduces end-to-end latency from 11.46 s to 3.83 s (approximately 3.0×). Adding residual refinement gives a full hybrid latency of 4.22 s. These timings exclude sensor acquisition and controller execution. Prediction remains a multi-second operation, and peak allocated memory is higher than the OpenDriveVLA reference.</p>
+        <p>After initialization and warmup, end-to-end latency is measured from a prepared observation to a usable trajectory, including preprocessing, context construction, trajectory generation, and output conversion. Sensor acquisition and controller execution are outside this timing boundary. Prediction remains a multi-second operation, and peak allocated memory is higher than the OpenDriveVLA reference.</p>
       </div>
     </div>
   </section>
@@ -191,23 +198,23 @@
   <section class="section" id="demos">
     <div class="container is-max-desktop">
       <h2 class="title is-3 has-text-centered">Demos</h2>
-      <p class="has-text-centered demo-intro">Closed-loop driving in simulation and on physical QCar2 hardware.</p>
+      <p class="has-text-centered demo-intro">A privileged NMPC simulation rollout with LeanVLA prediction overlays, alongside learned-policy execution on physical QCar2 hardware. Displayed instructions are simplified for visualization.</p>
       <div class="demo-grid">
         <figure class="demo-slot" data-demo-id="simulation-01">
           <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
-          <figcaption><h3 class="title is-5 demo-title">Simulation · Demo 1</h3><p class="demo-description">Simulation rollout. Video coming soon.</p></figcaption>
+          <figcaption><h3 class="title is-5 demo-title">Simulation · Expert control with LeanVLA predictions</h3><p class="demo-description">Privileged NMPC expert controls the vehicle; LeanVLA trajectory predictions are overlaid at each step. The displayed instruction is simplified for visualization.</p></figcaption>
         </figure>
         <figure class="demo-slot" data-demo-id="simulation-02">
           <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
-          <figcaption><h3 class="title is-5 demo-title">Simulation · Demo 2</h3><p class="demo-description">Simulation rollout. Video coming soon.</p></figcaption>
+          <figcaption><h3 class="title is-5 demo-title">Hardware Deployment · Route U</h3><p class="demo-description">Learned-policy execution on test configuration route U, shown from the perspective camera with task-region overlays and simplified instructions.</p></figcaption>
         </figure>
         <figure class="demo-slot" data-demo-id="hardware-01">
           <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
-          <figcaption><h3 class="title is-5 demo-title">Physical QCar2 · Demo 1</h3><p class="demo-description">Hardware rollout. Video coming soon.</p></figcaption>
+          <figcaption><h3 class="title is-5 demo-title">Hardware Deployment · Route F — Perspective</h3><p class="demo-description">Learned-policy execution on test configuration route F, shown from the perspective camera with key-event annotations.</p></figcaption>
         </figure>
         <figure class="demo-slot" data-demo-id="hardware-02">
           <div class="demo-media"><p class="demo-placeholder" role="status">Video coming soon</p></div>
-          <figcaption><h3 class="title is-5 demo-title">Physical QCar2 · Demo 2</h3><p class="demo-description">Hardware rollout. Video coming soon.</p></figcaption>
+          <figcaption><h3 class="title is-5 demo-title">Hardware Deployment · Route F — Bird’s-eye view</h3><p class="demo-description">Bird’s-eye view of the same route F hardware rollout, with task-region overlays and simplified instructions.</p></figcaption>
         </figure>
       </div>
       <noscript><p>Enable JavaScript to load available demo videos.</p></noscript>
